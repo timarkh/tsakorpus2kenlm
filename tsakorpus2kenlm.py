@@ -44,12 +44,53 @@ class LanguageProcessor:
                 return 'кӧкъямыс'
             elif s == '9':
                 return 'ӧкмыс'
-        elif s == '10':
-            return 'дас'
-        elif s == '20':
-            return 'кызь'
-        elif s == '30':
-            return 'комын'
+        elif len(s) == 2:
+            if s == '10':
+                return 'дас'
+            elif s == '20':
+                return 'кызь'
+            elif s[0] == '2':
+                return 'кызь ' + self.replace_numerals_kpv(s[1])
+            elif s == '30':
+                return 'комын'
+            elif s[0] == '3':
+                return 'комын ' + self.replace_numerals_kpv(s[1])
+            elif s == '40':
+                return 'нелямын'
+            elif s[0] == '4':
+                return 'нелямын ' + self.replace_numerals_kpv(s[1])
+            elif s == '50':
+                return 'ветымын'
+            elif s[0] == '5':
+                return 'ветымын ' + self.replace_numerals_kpv(s[1])
+            elif s == '60':
+                return 'квайтымын'
+            elif s[0] == '6':
+                return 'квайтымын ' + self.replace_numerals_kpv(s[1])
+            elif s == '70':
+                return 'сизимдас'
+            elif s[0] == '7':
+                return 'сизимдас ' + self.replace_numerals_kpv(s[1])
+            elif s == '80':
+                return 'кöкъямысдас'
+            elif s[0] == '8':
+                return 'кöкъямысдас ' + self.replace_numerals_kpv(s[1])
+            elif s == '90':
+                return 'öкмысдас'
+            elif s[0] == '9':
+                return 'öкмысдас ' + self.replace_numerals_kpv(s[1])
+        elif len(s) == 3:
+            if s == '100':
+                return 'сё'
+        elif len(s) == 4:
+            if s == '1000':
+                return 'сюрс'
+            elif s[1:] == '000':
+                return self.replace_numerals_kpv(s[0]) + ' сюрс'
+            elif s[1] == '0':
+                return self.replace_numerals_kpv(s[0]) + ' сюрс ' + self.replace_numerals_kpv(s[2:])
+            elif s[:2] == '19':
+                return 'сюрс öкмыс сё ' + self.replace_numerals_kpv(s[2:])
         return s
 
     def replace_latin(self, s):
