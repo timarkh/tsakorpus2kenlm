@@ -1,0 +1,4 @@
+**.pyc
+**.idea/**
+corpora_kenlm/**
+corpora/**
